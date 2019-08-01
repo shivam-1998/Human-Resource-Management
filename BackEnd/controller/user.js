@@ -17,7 +17,7 @@ router.post('/personaldetails',
         check('password').isLength({ min: 3 }).withMessage('must be at least 3 chars long').not().isEmpty().withMessage("can not be blank"),
         check('contact_no').isLength({ min: 10 }).not().isEmpty().withMessage("can not be blank"),
         check('address').not().isEmpty().withMessage("can not be blank"),
-        check('dob').not().isEmpty().withMessage("can not be blank"),
+        check('dob').not().isEmpty().withMessage("can not be blank").isISO8601().toDate(),
         check('pan_no').isLength({ min: 10 }).withMessage("It must be 10 digit number"),
         check('em_contact_no').isLength({ min: 10 }).not().isEmpty().withMessage("can not be blank"),
         check('em_contact_name').not().isEmpty().withMessage("can not be blank"),
@@ -25,39 +25,41 @@ router.post('/personaldetails',
         // check('skills'),
         // check('hobbies').isOptional(),
         check('role').not().isEmpty().withMessage("can not be blank").isIn(['HR', 'Employee']),
-    ], (req, res) => {
-        console.log(req.body);
+    ],
+    (req, res) => {
+        try {
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                return res.status(422).json({ errors: errors.array() });
+            } else {
+                const empname = req.body.emp_name
+                const email = req.body.email
+                const password = bcrypt.hashSync(req.body.password, 8)
+                const contact_no = req.body.contact_no
+                const address = req.body.address
+                const dob = req.body.dob
+                const pan_no = req.body.pan_no
+                const em_contact_no = req.body.em_contact_no
+                const em_contact_name = req.body.em_contact_name
+                const marital_status = req.body.marital_status
+                const skills = req.body.skills
+                const hobbies = req.body.hobbies
+                const role = req.body.role
 
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            return res.status(422).json({ errors: errors.array() });
-        } else {
-            const empname = req.body.emp_name
-            const email = req.body.email
-            const password = bcrypt.hashSync(req.body.password, 8)
-            const contact_no = req.body.contact_no
-            const address = req.body.address
-            const dob = req.body.dob
-            const pan_no = req.body.pan_no
-            const em_contact_no = req.body.em_contact_no
-            const em_contact_name = req.body.em_contact_name
-            const marital_status = req.body.marital_status
-            const skills = req.body.skills
-            const hobbies = req.body.hobbies
-            const role = req.body.role
-
-            let sql =
-                `INSERT INTO Employee_master(emp_name,email,password,contact_no,address,dob,pan_no,em_contact_no, em_contact_name,marital_status,skills,hobbies,role)
+                let sql =
+                    `INSERT INTO Employee_master(emp_name,email,password,contact_no,address,dob,pan_no,em_contact_no, em_contact_name,marital_status,skills,hobbies,role)
         VALUES('${empname}','${email}','${password}',${contact_no},'${address}','${dob}','${pan_no}',${em_contact_no},'${em_contact_name}','${marital_status}','${skills}','${hobbies}','${role}')`;
 
-            con.query(sql, function (error, results) {
-                if (!error) {
-                    return res.status(200).send("Register successfully personal details");
-                } else {
-                    res.status(500).json("not registerd the details successfully" + error);
-                }
-            });
-        }
+                con.query(sql, function (error, results) {
+                    if (!error) {
+                        return res.status(200).send({msg:"Register successfully personal details",emp:results});
+                    } else {
+                        res.status(500).json({msg:'not registerd the details successfully',error:error});
+                    }
+                });
+            }
+        } catch (error) { res.status(500).send({ msg: error }) };
+
     })
 
 
@@ -87,7 +89,7 @@ router.post('/login',
                             let token = jwt.sign(data, SECRET_KEY, {
                                 expiresIn: 5000
                             });
-                            res.status(200).json({ status: true, token: token, id: results[0]['emp_id'] })
+                            res.status(200).json({ status: true, token: token, emp_id: results[0]['emp_id'] })
                         } else {
                             res.status(500).json(" password does not match");
                         }

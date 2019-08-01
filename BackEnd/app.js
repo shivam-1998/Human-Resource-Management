@@ -5,6 +5,9 @@ const port =  process.env.port || 3000;
 require('dotenv').config();
 
 const user = require('./controller/user');
+const education = require('./controller/education')
+const family = require('./controller/family')
+const professional = require('./controller/professional')
 
 
 
@@ -13,6 +16,9 @@ const user = require('./controller/user');
 app.use(bodyparser.json())
 app.use(bodyparser.urlencoded({extended:false}))
 app.use(user);
+app.use(family);
+app.use(professional);
+app.use(education);
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
