@@ -129,10 +129,8 @@
                         </div>
                         <div class="form-group">
                             <label for="sel1">Role:</label>
-                            <select class="form-control" id="sel1" formControlName="role" aria-placeholder="select role"
-                                required>
-                                <option value="EMPLOYEE">EMPLOYEE</option>
-                            </select>
+                            <input type="text" class="form-control" formControlName="role" placeholder="role"
+                            required>
                             <span class="text-danger"
                                 *ngIf="!registerForm.get('role').valid && registerForm.get('role').touched">
                                 <span *ngIf="!registerForm.get('role').errors['valid']">Enter role</span>

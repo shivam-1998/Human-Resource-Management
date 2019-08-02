@@ -15,5 +15,14 @@ export class AdminComponent implements OnInit {
   add_p(){
     this.router.navigate(['admin/personal']);
   }
+  add_E(){
+    this.router.navigate(['admin/education']);
+  }
+  add_F(){
+    this.router.navigate(['admin/family']);
+  }
+  add_Pr(){
+    this.router.navigate(['admin/professional']);
+  }
 
 }

@@ -12,4 +12,15 @@ export class EmployeeService {
     return this.http.post<any>("http://localhost:3300/personaldetails",data)
   }
 
+  addEducationaldata(data){
+    return this.http.post<any>('http://localhost:3300/education',data)
+  }
+
+  addFamilydata(data){
+    return this.http.post<any>('http://localhost:3300/family',data)
+  }
+
+  addProfessionaldata(data){
+    return this.http.post<any>('http://localhost:3300/professional',data)
+  }
 }
