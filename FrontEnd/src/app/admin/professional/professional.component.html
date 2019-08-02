@@ -1,0 +1,73 @@
+<div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="login-content">
+                    <div class="login-form">
+                        <h4>Education Details</h4>
+                        <form [formGroup]="registerForm" (ngSubmit)="EducationDetails()">
+    
+                            <div class="form-group">
+                                <label>Company Name</label>
+                                <input type="text" class="form-control" formControlName="c_name" placeholder="Company Name"
+                                    required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('c_name').valid && registerForm.get('c_name').touched">
+                                    <span *ngIf="!registerForm.get('c_name').errors['valid']">Enter
+                                            Company Name</span>
+                                </span>
+                            </div>
+                            <div class="form-group ">
+                                <label>Designation</label>
+                                <input type="text" class="form-control" formControlName="designation" placeholder="degree"
+                                    required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('designation').valid && registerForm.get('designation').touched">
+                                    <span *ngIf="!registerForm.get('designation').errors['valid']">Enter designation</span>
+                                </span>
+                            </div>
+                            <div class="form-group ">
+                                <label>Join date</label>
+                                <input type="date" class="form-control" formControlName="join_date" placeholder="Password"
+                                    required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('join_date').valid && registerForm.get('join_date').touched">
+                                    <span *ngIf="!registerForm.get('join_date').errors['valid']">Enter join_date</span>
+                                </span>
+                            </div>
+                            <div class="form-group ">
+                                <label>Revealing date</label>
+                                <input type="date" class="form-control" formControlName="revealing_date" placeholder="Password"
+                                    >
+                                <!-- <span class="text-danger"
+                                    *ngIf="!registerForm.get('revealing_date').valid && registerForm.get('revealing_date').touched">
+                                    <span *ngIf="!registerForm.get('revealing_date').errors['valid']">Enter revealing_date</span>
+                                </span> -->
+                            </div>
+                            <div class="form-group">
+                                    <label>Status</label>
+                                    <input type="text" class="form-control" formControlName="status" placeholder="Company Name"
+                                        required>
+                                    <span class="text-danger"
+                                        *ngIf="!registerForm.get('status').valid && registerForm.get('status').touched">
+                                        <span *ngIf="!registerForm.get('status').errors['valid']">Enter
+                                                status</span>
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                        <label>Department</label>
+                                        <input type="text" class="form-control" formControlName="department" placeholder="Company Name"
+                                            required>
+                                        <span class="text-danger"
+                                            *ngIf="!registerForm.get('department').valid && registerForm.get('department').touched">
+                                            <span *ngIf="!registerForm.get('department').errors['valid']">Enter
+                                                    department</span>
+                                        </span>
+                                    </div>
+    
+                            <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

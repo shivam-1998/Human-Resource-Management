@@ -17,20 +17,20 @@ router.post('/personaldetails',
         check('password').isLength({ min: 3 }).withMessage('must be at least 3 chars long').not().isEmpty().withMessage("can not be blank"),
         check('contact_no').isLength({ min: 10 }).not().isEmpty().withMessage("can not be blank"),
         check('address').not().isEmpty().withMessage("can not be blank"),
-        check('dob').not().isEmpty().withMessage("can not be blank").isISO8601().toDate(),
+        check('dob').not().isEmpty().withMessage("can not be blank"),
         check('pan_no').isLength({ min: 10 }).withMessage("It must be 10 digit number"),
         check('em_contact_no').isLength({ min: 10 }).not().isEmpty().withMessage("can not be blank"),
         check('em_contact_name').not().isEmpty().withMessage("can not be blank"),
         check('marital_status').isIn(['married', 'unmarried']),
         // check('skills'),
         // check('hobbies').isOptional(),
-        check('role').not().isEmpty().withMessage("can not be blank").isIn(['HR', 'Employee']),
+        check('role').not().isEmpty().withMessage("can not be blank").isIn(['HR', 'EMPLOYEE']),
     ],
     (req, res) => {
         try {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
-                return res.status(422).json({ errors: errors.array() });
+                return res.status(422).json({ errors: req.body });
             } else {
                 const empname = req.body.emp_name
                 const email = req.body.email
@@ -77,8 +77,7 @@ router.post('/login',
 
             const email = req.body.email
             const password = req.body.password
-            data = { email, password }
-
+            data={email,password}
             let loginquery = `SELECT * FROM Employee_master WHERE email = '${email}'`;
             con.query(loginquery, function (error, results) {
                 if (error) {
@@ -89,7 +88,7 @@ router.post('/login',
                             let token = jwt.sign(data, SECRET_KEY, {
                                 expiresIn: 5000
                             });
-                            res.status(200).json({ token: token, emp_id: results[0]['emp_id'],data })
+                            res.status(200).json({ token: token, emp_id: results[0]['emp_id'],role: results[0]['role']})
                         } else {
                             res.status(500).json(" password does not match");
                         }

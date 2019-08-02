@@ -8,14 +8,26 @@ import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 import { AuthguardService } from './authguard.service';
 import { TokenInterceptorService } from './token-interceptor.service';
-import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './header/header.component';
+import { PersonalComponent } from './admin/personal/personal.component';
+import { EducationComponent } from './admin/education/education.component';
+import { FamilyComponent } from './admin/family/family.component';
+import { ProfessionalComponent } from './admin/professional/professional.component';
+import { AdminComponent } from './admin/admin.component';
+import { EmployeeComponent } from './employee/employee.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HeaderComponent,
+    PersonalComponent,
+    EducationComponent,
+    FamilyComponent,
+    ProfessionalComponent,
+    AdminComponent,
+    EmployeeComponent
   ],
   imports: [
     BrowserModule,

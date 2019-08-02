@@ -1,0 +1,151 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="login-content">
+                <div class="login-form">
+                    <h4>Personal details</h4>
+                    <form [formGroup]="registerForm" (ngSubmit)="PersonalDetails()">
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label>Name</label>
+                                <input type="text" class="form-control" formControlName="emp_name" placeholder="Name"
+                                    required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('emp_name').valid && registerForm.get('emp_name').touched">
+                                    <span *ngIf="!registerForm.get('emp_name').errors['valid']">Enter name</span>
+                                </span>
+                            </div>
+                            <div class="form-group col-md-5">
+                                <label>Email address</label>
+                                <input type="email" class="form-control" formControlName="email" placeholder="Email"
+                                    required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('email').valid && registerForm.get('email').touched">
+                                    <span *ngIf="!registerForm.get('email').errors['valid']">Enter email</span>
+                                </span>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Password</label>
+                                <input type="password" class="form-control" formControlName="password"
+                                    placeholder="Password" required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('password').valid && registerForm.get('password').touched">
+                                    <span *ngIf="!registerForm.get('password').errors['valid']">Invalid password</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label>contact no</label>
+                                <input type="text" class="form-control" formControlName="contact_no"
+                                    placeholder="contact_no" required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('contact_no').valid && registerForm.get('contact_no').touched">
+                                    <span *ngIf="!registerForm.get('contact_no').errors['valid']">Enter contact
+                                        no</span>
+                                </span>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Address</label>
+                                <input type="textarea" class="form-control" formControlName="address"
+                                    placeholder="address" required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('address').valid && registerForm.get('address').touched">
+                                    <span *ngIf="!registerForm.get('address').errors['valid']">Enter address</span>
+                                </span>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>DOB</label>
+                                <input type="date" class="form-control" formControlName="dob" placeholder="dob"
+                                    required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('dob').valid && registerForm.get('dob').touched">
+                                    <span *ngIf="!registerForm.get('dob').errors['valid']">Enter Dob</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label>pan no</label>
+                                <input type="text" class="form-control" formControlName="pan_no" placeholder="pan no"
+                                    required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('pan_no').valid && registerForm.get('pan_no').touched">
+                                    <span *ngIf="!registerForm.get('pan_no').errors['valid']"> Enter pan no</span>
+                                </span>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Em-Contact-no</label>
+                                <input type="text" class="form-control" formControlName="em_contact_no"
+                                    placeholder="em_contact_no" required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('em_contact_no').valid && registerForm.get('em_contact_no').touched">
+                                    <span *ngIf="!registerForm.get('em_contact_no').errors['valid']"> Enter
+                                        em_contact_no</span>
+                                </span>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Em-Contact-name</label>
+                                <input type="text" class="form-control" formControlName="em_contact_name"
+                                    placeholder="em_contact_name" required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('em_contact_name').valid && registerForm.get('em_contact_name').touched">
+                                    <span *ngIf="!registerForm.get('em_contact_name').errors['valid']"> Enter
+                                        em_contact_name</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label>marital status</label>
+                                <input type="text" class="form-control" formControlName="marital_status"
+                                    placeholder="marital_status" required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('marital_status').valid && registerForm.get('marital_status').touched">
+                                    <span *ngIf="!registerForm.get('marital_status').errors['valid']"> Enter
+                                        marital_status</span>
+                                </span>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>skills</label>
+                                <input type="text" class="form-control" formControlName="skills" placeholder="skills"
+                                    required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('skills').valid && registerForm.get('skills').touched">
+                                    <span *ngIf="!registerForm.get('skills').errors['valid']"> Enter
+                                        skills</span>
+                                </span>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>hobbies</label>
+                                <input type="text" class="form-control" formControlName="hobbies" placeholder="hobbies"
+                                    required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('hobbies').valid && registerForm.get('hobbies').touched">
+                                    <span *ngIf="!registerForm.get('hobbies').errors['valid']"> Enter
+                                        hobbies</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="sel1">Role:</label>
+                            <select class="form-control" id="sel1" formControlName="role" aria-placeholder="select role"
+                                required>
+                                <option value="EMPLOYEE">EMPLOYEE</option>
+                            </select>
+                            <span class="text-danger"
+                                *ngIf="!registerForm.get('role').valid && registerForm.get('role').touched">
+                                <span *ngIf="!registerForm.get('role').errors['valid']">Enter role</span>
+                            </span>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Register</button>
+
+                        <!-- <div class="register-link m-t-15 text-center">
+                                            <p>Already have account ? <a href="#"> Sign in</a></p>
+                                        </div> -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

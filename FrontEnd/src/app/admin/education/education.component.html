@@ -1,0 +1,53 @@
+<div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="login-content">
+                    <div class="login-form">
+                        <h4>Education Details</h4>
+                        <form [formGroup]="registerForm" (ngSubmit)="EducationDetails()">
+    
+                            <div class="form-group">
+                                <label>Institue Name</label>
+                                <input type="text" class="form-control" formControlName="institute_name" placeholder="Name"
+                                    required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('institute_name').valid && registerForm.get('institute_name').touched">
+                                    <span *ngIf="!registerForm.get('institute_name').errors['valid']">Enter
+                                        institute_name</span>
+                                </span>
+                            </div>
+                            <div class="form-group ">
+                                <label>Degree</label>
+                                <input type="text" class="form-control" formControlName="degree" placeholder="degree"
+                                    required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('degree').valid && registerForm.get('degree').touched">
+                                    <span *ngIf="!registerForm.get('degree').errors['valid']">Enter degree</span>
+                                </span>
+                            </div>
+                            <div class="form-group ">
+                                <label>start date</label>
+                                <input type="date" class="form-control" formControlName="start_date" placeholder="Password"
+                                    required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('start_date').valid && registerForm.get('start_date').touched">
+                                    <span *ngIf="!registerForm.get('start_date').errors['valid']">Enter start_date</span>
+                                </span>
+                            </div>
+                            <div class="form-group ">
+                                <label>End date</label>
+                                <input type="date" class="form-control" formControlName="end_date" placeholder="Password"
+                                    required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('end_date').valid && registerForm.get('end_date').touched">
+                                    <span *ngIf="!registerForm.get('end_date').errors['valid']">Enter end_date</span>
+                                </span>
+                            </div>
+    
+                            <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

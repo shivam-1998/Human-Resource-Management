@@ -19,6 +19,11 @@ getToken(){
   return localStorage.getItem('token');
 }
 
+logoutUser(){
+  localStorage.removeItem('token')
+  this.router.navigate(['login']);
+}
+
 loggedIn(){
   return !!localStorage.getItem('token');
 }

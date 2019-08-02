@@ -1,0 +1,53 @@
+<div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="login-content">
+                    <div class="login-form">
+                        <h4>Family Details</h4>
+                        <form [formGroup]="registerForm" (ngSubmit)="FamilyDetails()">
+    
+                            <div class="form-group">
+                                <label> Name</label>
+                                <input type="text" class="form-control" formControlName="name" placeholder="Name"
+                                    required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('name').valid && registerForm.get('name').touched">
+                                    <span *ngIf="!registerForm.get('name').errors['valid']">Enter
+                                            name</span>
+                                </span>
+                            </div>
+                            <div class="form-group ">
+                                <label>Relation</label>
+                                <input type="text" class="form-control" formControlName="relation" placeholder="relation"
+                                    required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('relation').valid && registerForm.get('relation').touched">
+                                    <span *ngIf="!registerForm.get('relation').errors['valid']">Enter relation</span>
+                                </span>
+                            </div>
+                            <div class="form-group ">
+                                <label>occupation</label>
+                                <input type="text" class="form-control" formControlName="occupation" placeholder="occupation"
+                                    required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('occupation').valid && registerForm.get('occupation').touched">
+                                    <span *ngIf="!registerForm.get('occupation').errors['valid']">Enter occupation</span>
+                                </span>
+                            </div>
+                            <div class="form-group ">
+                                <label>Contact No</label>
+                                <input type="text" class="form-control" formControlName="phone_no" placeholder="phone_no"
+                                    required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('phone_no').valid && registerForm.get('phone_no').touched">
+                                    <span *ngIf="!registerForm.get('phone_no').errors['valid']">Enter phone_no</span>
+                                </span>
+                            </div>
+    
+                            <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

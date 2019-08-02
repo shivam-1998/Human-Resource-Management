@@ -33,7 +33,11 @@ export class LoginComponent implements OnInit {
         console.log(res);
         
          localStorage.setItem('token',res.token)
-         this.router.navigate(['/home'])
+         if(res.role == 'HR'){
+          this.router.navigate(['/admin'])
+         }else{
+           this.router.navigate(['/employee'])
+         }
       },
       err => {
         this.msg = err.error
