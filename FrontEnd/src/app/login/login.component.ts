@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm : FormGroup;
+  msg=null;
 
   constructor(private auth:AuthService,private router:Router) { 
     
@@ -29,10 +30,14 @@ export class LoginComponent implements OnInit {
     console.log(data);
     
       this.auth.loginUser(data).subscribe(res=>{
+        console.log(res);
+        
          localStorage.setItem('token',res.token)
          this.router.navigate(['/home'])
       },
-      err => console.log(err)
+      err => {
+        this.msg = err.error
+    }
       );
   }
 }

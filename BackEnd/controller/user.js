@@ -89,7 +89,7 @@ router.post('/login',
                             let token = jwt.sign(data, SECRET_KEY, {
                                 expiresIn: 5000
                             });
-                            res.status(200).json({ status: true, token: token, emp_id: results[0]['emp_id'] })
+                            res.status(200).json({ token: token, emp_id: results[0]['emp_id'],data })
                         } else {
                             res.status(500).json(" password does not match");
                         }
