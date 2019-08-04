@@ -29,6 +29,7 @@ export class FamilyComponent implements OnInit {
      this.empservice.addFamilydata(data).subscribe(emp => {
         console.log(emp);        
      })
+     this.router.navigate(['admin']);
   }
 
 }

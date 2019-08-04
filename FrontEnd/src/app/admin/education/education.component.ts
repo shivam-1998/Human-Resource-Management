@@ -30,6 +30,7 @@ export class EducationComponent implements OnInit {
       console.log(emp);
       
     })
+    this.router.navigate(['admin']);
   }
 
 }

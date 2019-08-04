@@ -4,13 +4,14 @@ const con = require('../connection/connection.js');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs')
 const { check, validationResult } = require('express-validator');
+const verifytoken = require('../verifytoken')
 require('dotenv').config();
 const SECRET_KEY = process.env.secretkey;
 
 
 
 //Personal Details
-router.post('/personaldetails',
+router.post('/personaldetails',verifytoken
     [
         check('emp_name').not().isEmpty().withMessage("can not be blank"),
         check('email').isEmail().withMessage('must be a valid email address').not().isEmpty().withMessage("can not be blank"),
@@ -101,6 +102,21 @@ router.post('/login',
 
         } catch (error) { res.status(500).send({ msg: error }) };
 
+    });
+
+//get personal details
+router.get('/viewpersonal',verifytoken,
+(req,res)=>{
+    const email = req.data.email
+    let query = `SELECT * FROM Employee_master WHERE email = '${email}'`;
+    con.query(query,function(err,results){
+        if (err){
+            res.status(500).json("there are some error with query");
+        }
+        else{
+            res.status(200).json({msg:"get the data successfully",result:results});
+        }
     })
+})
 
 module.exports = router;

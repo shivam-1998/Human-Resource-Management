@@ -32,6 +32,7 @@ export class ProfessionalComponent implements OnInit {
       console.log(emp);
       
     })
+    this.router.navigate(['admin']);
   }
 
 }

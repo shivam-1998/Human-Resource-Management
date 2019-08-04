@@ -47,4 +47,19 @@ router.post('/family', verifytoken, [
 
         } catch (error) { res.status(500).send({ msg: error }) };
     });
+
+//get family details
+    router.get('/vieweducation',verifytoken,
+    (req,res)=>{
+    const emp_id = req.data.emp_id
+    let query = `SELECT * FROM Family WHERE emp_id = '${emp_id}'`;
+    con.query(query,function(err,results){
+        if (err){
+            res.status(500).json("there are some error with query");
+        }
+        else{
+            res.status(200).json({msg:"get the data successfully",result:results});
+        }
+    })
+})
 module.exports = router;

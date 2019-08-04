@@ -4,12 +4,11 @@ const con = require('../connection/connection.js');
 const jwt = require('jsonwebtoken');
 const { check, validationResult } = require('express-validator');
 const verifytoken = require('../verifytoken')
-//family details
+//professional details
 router.post('/professional', verifytoken, [
     check('c_name').not().isEmpty().withMessage("can not be blank"),
     check('designation').not().isEmpty().withMessage("can not be blank"),
     check('join_date').not().isEmpty().withMessage("can not be blank"),
-    // check('revealing_date').not().isEmpty().withMessage("can not be blank"),
     check('dept_name').not().isEmpty().withMessage("can not be blank"),
     check('status').not().isEmpty().withMessage("can not be blank"),
 ],
@@ -51,5 +50,20 @@ router.post('/professional', verifytoken, [
 
         } catch (error) { res.status(500).send({ msg: error }) };
     });
+
+    //get professional details
+    router.get('/professional',verifytoken,
+    (req,res)=>{
+    const emp_id = req.data.emp_id
+    let query = `SELECT * FROM Professional WHERE emp_id = '${emp_id}'`;
+    con.query(query,function(err,results){
+        if (err){
+            res.status(500).json("there are some error with query");
+        }
+        else{
+            res.status(200).json({msg:"get the data successfully",result:results});
+        }
+    })
+})
 
 module.exports = router;
