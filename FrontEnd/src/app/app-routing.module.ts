@@ -11,10 +11,10 @@ import { EmployeeComponent } from './employee/employee.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'employee', component:EmployeeComponent },
+  { path: 'employee', component: EmployeeComponent },
   {
-    path: 'admin', component:AdminComponent , children: [
-      { path: 'personal', component: PersonalComponent },
+    path: 'admin', component: AdminComponent, children: [
+      { path: 'personal', component: PersonalComponent}, 
       { path: 'education', component: EducationComponent },
       { path: 'family', component: FamilyComponent },
       { path: 'professional', component: ProfessionalComponent }

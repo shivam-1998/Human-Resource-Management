@@ -6,13 +6,17 @@ export class TokenInterceptorService implements HttpInterceptor {
 
   constructor(private injector: Injector){}
   intercept(req, next) {
-    let authService = this.injector.get(AuthService)
-    let tokenizedReq = req.clone(
-      {
-        headers: req.headers.set('token', 'jwt' +authService.getToken())
-      }
-    )
-    return next.handle(tokenizedReq)
+    let authService = this.injector.get(AuthService);
+    if(localStorage.getItem('token')!=null){
+      let tokenizedReq = req.clone(
+        {
+          headers: req.headers.set('token',authService.getToken())
+        }
+      )
+      return next.handle(tokenizedReq)
+    } else {
+      return next.handle(req)
+    }
   }
 
 }

@@ -4,6 +4,8 @@ require('dotenv').config();
 const SECRET_KEY = process.env.secretkey;
 
 verifytoken = (req,res,next) => {
+     console.log(req.headers);
+     
      let decoded = jwt.verify(req.headers['token'],SECRET_KEY);
      if(decoded){
         const email = decoded.email

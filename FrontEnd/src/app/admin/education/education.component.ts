@@ -18,19 +18,28 @@ export class EducationComponent implements OnInit {
       degree : new FormControl(null,[Validators.required]),
       start_date : new FormControl(null,[Validators.required,Validators.email]),
       end_date : new FormControl(null,[Validators.required]),
+      emp_id:new FormControl(localStorage.getItem("user_id"))
      }); 
    }
 
   ngOnInit() {
+    const temp = localStorage.getItem("temp")
+    if(temp!=="true"){
+      this.router.navigate(["admin/personal"])     
+    }
   }
 
   EducationDetails(){
-    const data = this.registerForm.value
-    this.empservice.addEducationaldata(data).subscribe(emp=>{
+    console.log(this.registerForm.value);
+    
+    this.empservice.addEducationaldata(this.registerForm.value).subscribe(emp=>{
       console.log(emp);
+      localStorage.removeItem("temp");
+      localStorage.setItem("temp1","true");
+      this.router.navigate(['admin/professional']);
       
     })
-    this.router.navigate(['admin']);
+    // this.router.navigate(['admin']);
   }
 
 }

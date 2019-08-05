@@ -1,19 +1,26 @@
 <app-header></app-header>
-<div class="container">
+<div class="sidenav">
+        <a routerLink="personal" >Add Personal Details</a>
+        <a routerLink="education" >Add Educational Details</a>
+        <a routerLink="professional" >Add Professional Details</a>
+        <a routerLink="family" >Add Family Details</a>
+      </div>
+<!-- <div class="container">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-3" >
             <button class="btn btn-info" (click)="add_p()">Add Personal Details</button>
         </div>
-        <div class="col-md-6">
-            <button class="btn btn-primary" (click)="add_E()">Add Educational Details</button>
+        <div class="col-md-3">
+            <button class="btn btn-info" [disabled]="!x" (click)="add_E()">Add Educational Details</button>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-3">
+            <button class="btn btn-info" (click)="add_Pr()">Add Professional Details</button>
+        </div>
+        <div class="col-md-3">
             <button class="btn btn-info" (click)="add_F()">Add Family Details</button>
         </div>
-        <div class="col-md-6">
-            <button class="btn btn-primary" (click)="add_Pr()">Add Professional Details</button>
-        </div>
-    </div>
-</div>
+    </div><hr> -->
+        
+<!-- </div> -->
 
 <router-outlet></router-outlet>

@@ -3,7 +3,7 @@
         <div class="col-lg-6">
             <div class="login-content">
                 <div class="login-form">
-                    <h4>Personal details</h4>
+                    <h3>Personal details</h3><br>
                     <form [formGroup]="registerForm" (ngSubmit)="PersonalDetails()">
                         <div class="row">
                             <div class="form-group col-md-4">
@@ -97,14 +97,11 @@
                         </div>
                         <div class="row">
                             <div class="form-group col-md-4">
-                                <label>marital status</label>
-                                <input type="text" class="form-control" formControlName="marital_status"
-                                    placeholder="marital_status" required>
-                                <span class="text-danger"
-                                    *ngIf="!registerForm.get('marital_status').valid && registerForm.get('marital_status').touched">
-                                    <span *ngIf="!registerForm.get('marital_status').errors['valid']"> Enter
-                                        marital_status</span>
-                                </span>
+                                <label>marital status:</label><br>
+                                <input type="radio" formControlName="marital_status" value="married" required>married
+                                <br>
+                                <input type="radio" formControlName="marital_status" value="unmarried"
+                                    required>unmarried
                             </div>
                             <div class="form-group col-md-4">
                                 <label>skills</label>
@@ -127,7 +124,7 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="sel1">Role:</label>
                             <input type="text" class="form-control" formControlName="role" placeholder="role"
                             required>
@@ -135,9 +132,10 @@
                                 *ngIf="!registerForm.get('role').valid && registerForm.get('role').touched">
                                 <span *ngIf="!registerForm.get('role').errors['valid']">Enter role</span>
                             </span>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Register</button>
-
+                        </div> -->
+                        <button type="submit" [disabled]="!registerForm.valid"
+                            class="btn btn-primary btn-flat m-b-30 m-t-30">Register</button><br>
+                        <!-- <a routerLink="education">next</a> -->
                         <!-- <div class="register-link m-t-15 text-center">
                                             <p>Already have account ? <a href="#"> Sign in</a></p>
                                         </div> -->

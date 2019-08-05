@@ -19,20 +19,27 @@ export class ProfessionalComponent implements OnInit {
       join_date : new FormControl(null,[Validators.required]),
       revealing_date : new FormControl(null,[Validators.required]),
       status : new FormControl(null,[Validators.required]),
-      department : new FormControl(null,Validators.required),
+      dept_name : new FormControl(null,Validators.required),
+      emp_id:new FormControl(localStorage.getItem("user_id"))
      }); 
   }
 
   ngOnInit() {
+    const temp = localStorage.getItem("temp1")
+    if(temp!=="true"){
+      this.router.navigate(["admin/education"])     
+    }
   }
 
   ProfessionalDetails(){
-    const data =  this.registerForm.value
-    this.empservice.addProfessionaldata(data).subscribe(emp=>{
+      this.empservice.addProfessionaldata(this.registerForm.value).subscribe(emp=>{
       console.log(emp);
+      localStorage.removeItem("temp1")
+      localStorage.setItem("temp2","true");
+      this.router.navigate(['admin/family']);
       
     })
-    this.router.navigate(['admin']);
+    // this.router.navigate(['admin']);
   }
 
 }

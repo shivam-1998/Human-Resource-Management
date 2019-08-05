@@ -18,18 +18,25 @@ export class FamilyComponent implements OnInit {
       relation : new FormControl(null,Validators.required),
       occupation : new FormControl(null,Validators.required),
       phone_no : new FormControl(null,Validators.required),
+      emp_id:new FormControl(localStorage.getItem("user_id"))
      }); 
    }
 
   ngOnInit() {
+    const temp = localStorage.getItem("temp2")
+    if(temp!=="true"){
+      this.router.navigate(["admin/professional"])     
+    }
   }
 
   FamilyDetails(){
-     const data = this.registerForm.value
-     this.empservice.addFamilydata(data).subscribe(emp => {
-        console.log(emp);        
+     this.empservice.addFamilydata(this.registerForm.value).subscribe(emp => {
+        console.log(emp);
+        localStorage.removeItem("user_id")
+        localStorage.removeItem("temp2");  
+        this.router.navigate(['admin']);      
      })
-     this.router.navigate(['admin']);
+    //  this.router.navigate(['admin']);
   }
 
 }

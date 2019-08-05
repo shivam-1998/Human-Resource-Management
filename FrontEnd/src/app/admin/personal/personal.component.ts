@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DebugNode } from '@angular/core';
 import { AuthService } from 'src/app/auth.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -25,7 +25,7 @@ export class PersonalComponent implements OnInit {
       marital_status : new FormControl(null,Validators.required),
       skills : new FormControl(null,Validators.required),
       hobbies : new FormControl(null,Validators.required),
-      role : new FormControl(null,Validators.required),
+      role : new FormControl("EMPLOYEE",Validators.required),
      });  
   }
 
@@ -35,11 +35,17 @@ export class PersonalComponent implements OnInit {
   PersonalDetails(){
     const data =  this.registerForm.value
     console.log(data);
-    this.empservice.addPersonaldata(data).subscribe(emp =>{
-        console.log(emp);
+    this.empservice.addPersonaldata(data).subscribe(res =>{
+        localStorage.setItem('user_id',res["emp"]["insertId"]);
+        localStorage.setItem('temp',"true")
+        this.router.navigate(['admin/education']);
+
         
+    },(err)=>{
+      console.log(err);
+      
     })
-    this.router.navigate(['admin']);
+   
     
     
   }

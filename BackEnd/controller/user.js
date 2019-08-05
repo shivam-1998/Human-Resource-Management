@@ -11,7 +11,7 @@ const SECRET_KEY = process.env.secretkey;
 
 
 //Personal Details
-router.post('/personaldetails',verifytoken
+router.post('/personaldetails',verifytoken,
     [
         check('emp_name').not().isEmpty().withMessage("can not be blank"),
         check('email').isEmail().withMessage('must be a valid email address').not().isEmpty().withMessage("can not be blank"),
@@ -66,10 +66,13 @@ router.post('/personaldetails',verifytoken
 
 //login
 router.post('/login',
-    [
-        check('email').isEmail().withMessage('please enter a valid email address').not().isEmpty().withMessage('can not be blank'),
-        check('password').isLength({ min: 5 }).withMessage("Length should be min 5 char").not().isEmpty().withMessage('can not be blank')
-    ], (req, res) => {
+    // [
+    //     check('email').isEmail().withMessage('please enter a valid email address').not().isEmpty().withMessage('can not be blank'),
+    //     check('password').isLength({ min: 5 }).withMessage("Length should be min 5 char").not().isEmpty().withMessage('can not be blank')
+    // ], 
+    (req, res) => {
+        console.log("in");
+        console.log(req.body);
         try {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {

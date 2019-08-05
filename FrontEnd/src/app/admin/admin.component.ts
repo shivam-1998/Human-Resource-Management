@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { EmployeeService } from '../employee.service';
 
 @Component({
   selector: 'app-admin',
@@ -7,22 +8,26 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-
-  constructor(private router:Router) { }
+  x;
+  constructor(private router: Router, private empservice: EmployeeService) { }
 
   ngOnInit() {
+    this.x = localStorage.getItem("user_id")
+
   }
-  add_p(){
+  add_p() {
     this.router.navigate(['admin/personal']);
   }
-  add_E(){
+  add_E() {
     this.router.navigate(['admin/education']);
   }
-  add_F(){
+
+  add_F() {
     this.router.navigate(['admin/family']);
   }
-  add_Pr(){
-    this.router.navigate(['admin/professional']);
+
+  add_Pr() {
+  this.router.navigate(['admin/family']);
   }
 
 }

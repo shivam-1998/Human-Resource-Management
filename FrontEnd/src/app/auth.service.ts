@@ -11,8 +11,10 @@ export class AuthService {
 
   constructor(private http:HttpClient ,private router:Router) { }
 
-loginUser(user){
-  return this.http.post<any>(this._loginUrl,user)
+loginUser(user){ 
+  console.log(user);
+  
+  return this.http.post("http://localhost:3300/login",user)
 }
 
 getToken(){

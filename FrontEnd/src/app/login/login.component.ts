@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.loginForm = new FormGroup({
       email : new FormControl(null,[Validators.required,Validators.email]),
-      password : new FormControl(null,[Validators.required,Validators.minLength(4)])
+      password : new FormControl(null,[Validators.required,Validators.minLength(5)])
     });
   }
   
@@ -28,18 +28,20 @@ export class LoginComponent implements OnInit {
     
     const data =  this.loginForm.value
     console.log(data);
-    
+      
       this.auth.loginUser(data).subscribe(res=>{
         console.log(res);
         
-         localStorage.setItem('token',res.token)
-         if(res.role == 'HR'){
+         localStorage.setItem('token',res["token"])
+         if(res["role"] == 'HR'){
           this.router.navigate(['/admin'])
          }else{
            this.router.navigate(['/employee'])
          }
       },
       err => {
+        console.log(err);
+        
         this.msg = err.error
     }
       );

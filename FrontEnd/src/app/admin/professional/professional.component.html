@@ -3,7 +3,7 @@
             <div class="col-lg-7">
                 <div class="login-content">
                     <div class="login-form">
-                        <h4>Education Details</h4>
+                        <h4>Professional Details</h4>
                         <form [formGroup]="registerForm" (ngSubmit)="ProfessionalDetails()">
     
                             <div class="form-group">
@@ -18,7 +18,7 @@
                             </div>
                             <div class="form-group ">
                                 <label>Designation</label>
-                                <input type="text" class="form-control" formControlName="designation" placeholder="degree"
+                                <input type="text" class="form-control" formControlName="designation" placeholder="designation"
                                     required>
                                 <span class="text-danger"
                                     *ngIf="!registerForm.get('designation').valid && registerForm.get('designation').touched">
@@ -27,7 +27,7 @@
                             </div>
                             <div class="form-group ">
                                 <label>Join date</label>
-                                <input type="date" class="form-control" formControlName="join_date" placeholder="Password"
+                                <input type="date" class="form-control" formControlName="join_date" placeholder="join_date"
                                     required>
                                 <span class="text-danger"
                                     *ngIf="!registerForm.get('join_date').valid && registerForm.get('join_date').touched">
@@ -36,7 +36,7 @@
                             </div>
                             <div class="form-group ">
                                 <label>Revealing date</label>
-                                <input type="date" class="form-control" formControlName="revealing_date" placeholder="Password"
+                                <input type="date" class="form-control" formControlName="revealing_date" placeholder="revealing_date"
                                     >
                                 <!-- <span class="text-danger"
                                     *ngIf="!registerForm.get('revealing_date').valid && registerForm.get('revealing_date').touched">
@@ -44,26 +44,28 @@
                                 </span> -->
                             </div>
                             <div class="form-group">
-                                    <label>Status</label>
-                                    <input type="text" class="form-control" formControlName="status" placeholder="Company Name"
-                                        required>
-                                    <span class="text-danger"
-                                        *ngIf="!registerForm.get('status').valid && registerForm.get('status').touched">
-                                        <span *ngIf="!registerForm.get('status').errors['valid']">Enter
-                                                status</span>
-                                    </span>
-                                </div>
-                                <div class="form-group">
-                                        <label>Department</label>
-                                        <input type="text" class="form-control" formControlName="department" placeholder="Company Name"
-                                            required>
-                                        <span class="text-danger"
-                                            *ngIf="!registerForm.get('department').valid && registerForm.get('department').touched">
-                                            <span *ngIf="!registerForm.get('department').errors['valid']">Enter
-                                                    department</span>
-                                        </span>
-                                    </div>
-    
+                                <label>Status</label>
+                                <input type="text" class="form-control" formControlName="status" placeholder="status"
+                                    required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('status').valid && registerForm.get('status').touched">
+                                    <span *ngIf="!registerForm.get('status').errors['valid']">Enter
+                                            status</span>
+                                </span>
+                            </div>
+                           
+                            <div class="form-group">
+                                <label>Department</label>
+                                <input type="text" class="form-control" formControlName="dept_name" placeholder="dept_name"
+                                    required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('dept_name').valid && registerForm.get('dept_name').touched">
+                                    <span *ngIf="!registerForm.get('dept_name').errors['valid']">Enter
+                                            department</span>
+                                </span>
+                            </div>
+
+                           
                             <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Register</button>
                         </form>
                     </div>
