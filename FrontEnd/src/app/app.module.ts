@@ -15,6 +15,7 @@ import { FamilyComponent } from './admin/family/family.component';
 import { ProfessionalComponent } from './admin/professional/professional.component';
 import { AdminComponent } from './admin/admin.component';
 import { EmployeeComponent } from './employee/employee.component';
+import { ViewemployeesComponent } from './admin/viewemployees/viewemployees.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { EmployeeComponent } from './employee/employee.component';
     FamilyComponent,
     ProfessionalComponent,
     AdminComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    ViewemployeesComponent
   ],
   imports: [
     BrowserModule,

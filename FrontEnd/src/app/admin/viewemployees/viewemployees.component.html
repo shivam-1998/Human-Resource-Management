@@ -1,0 +1,26 @@
+<hr>
+<div class="container">
+  <div class="row">
+      <div class="col-md-11">
+            <div class="table">
+                    <tr>
+                        <th>EmpID</th>
+                        <th>Emp Name</th>
+                        <th>Email</th>
+                        <th>Contact_no</th>
+                        <th></th>
+                    </tr>
+                    <tr *ngFor="let emp of empdata; let i = index">
+                        <td>{{emp.emp_id}}</td>
+                        <td>{{emp.emp_name}}</td>
+                        <td>{{emp.email}}</td>
+                        <td>{{emp.contact_no}}</td>
+                        <td><button class="btn btn-primary"
+                                (click)="edit(emp_id)">update</button>
+                        </td>
+                        <!-- <td><button class="btn btn-primary" (click)="AssigneToTask(emp.firstname,emp.lastname,emp.email)">AssigneToTask</button></td> -->
+                    </tr>
+                </div>
+      </div>
+  </div>
+</div>

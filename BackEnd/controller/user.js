@@ -108,10 +108,10 @@ router.post('/login',
     });
 
 //get personal details
-router.get('/viewpersonal',verifytoken,
+router.get('/viewemployees',verifytoken,
 (req,res)=>{
     const email = req.data.email
-    let query = `SELECT * FROM Employee_master WHERE email = '${email}'`;
+    let query = `SELECT * FROM Employee_master WHERE role = 'EMPLOYEE'`;
     con.query(query,function(err,results){
         if (err){
             res.status(500).json("there are some error with query");

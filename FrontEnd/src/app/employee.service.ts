@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { empdata } from './model/empdata';
 
 @Injectable({
   providedIn: 'root'
@@ -22,4 +24,10 @@ export class EmployeeService {
   addProfessionaldata(data){
     return this.http.post<any>('http://localhost:3300/professional',data)
   }
+
+  //viewemployeelist
+  viewEmployeeList(){
+    return this.http.get('http://localhost:3300/viewemployees')
+  }
+
 }
