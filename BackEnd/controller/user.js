@@ -66,10 +66,10 @@ router.post('/personaldetails',verifytoken,
 
 //login
 router.post('/login',
-    // [
-    //     check('email').isEmail().withMessage('please enter a valid email address').not().isEmpty().withMessage('can not be blank'),
-    //     check('password').isLength({ min: 5 }).withMessage("Length should be min 5 char").not().isEmpty().withMessage('can not be blank')
-    // ], 
+    [
+        check('email').isEmail().withMessage('please enter a valid email address').not().isEmpty().withMessage('can not be blank'),
+        check('password').isLength({ min: 5 }).withMessage("Length should be min 5 char").not().isEmpty().withMessage('can not be blank')
+    ], 
     (req, res) => {
         console.log("in");
         console.log(req.body);
