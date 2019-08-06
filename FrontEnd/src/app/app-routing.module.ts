@@ -8,6 +8,7 @@ import { ProfessionalComponent } from './admin/professional/professional.compone
 import { AdminComponent } from './admin/admin.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { ViewemployeesComponent } from './admin/viewemployees/viewemployees.component';
+import { EditComponent } from './edit/edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -19,7 +20,8 @@ const routes: Routes = [
       { path: 'education', component: EducationComponent },
       { path: 'family', component: FamilyComponent },
       { path: 'professional', component: ProfessionalComponent },
-      { path: 'employeelist', component: ViewemployeesComponent }
+      { path: 'employeelist', component: ViewemployeesComponent },
+      { path: 'edit', component: EditComponent }
     ]
   }
 ];

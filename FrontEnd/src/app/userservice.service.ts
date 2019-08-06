@@ -8,20 +8,20 @@ export class UserserviceService {
 
   constructor(private http:HttpClient) { }
 
-  viewpersonal(){
-    this.http.get<any>("http://localhost:3300/viewpersonaldata")
+  viewpersonal(id){
+   return this.http.get("http://localhost:3300/viewpersonaldata/"+id)
   }
   
-  vieweducation(){
-    this.http.get("http://localhost:3300/vieweducationdata")
+  vieweducation(id){
+   return this.http.get("http://localhost:3300/vieweducationdata/"+id)
   }
   
-  viewprofessional(){
-    this.http.get("http://localhost:3300/viewprofessionaldata")
+  viewprofessional(id){
+   return this.http.get("http://localhost:3300/viewprofessionaldata/"+id)
   }
   
-  viewfamily(){
-    this.http.get("http://localhost:3300/viewfamilydata")
+  viewfamily(id){
+   return this.http.get("http://localhost:3300/viewfamilydata/"+id)
   }
   
 }

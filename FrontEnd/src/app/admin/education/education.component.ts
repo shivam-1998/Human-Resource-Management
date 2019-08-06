@@ -16,7 +16,7 @@ export class EducationComponent implements OnInit {
     this.registerForm = new FormGroup({
       institute_name : new FormControl(null,[Validators.required]),
       degree : new FormControl(null,[Validators.required]),
-      start_date : new FormControl(null,[Validators.required,Validators.email]),
+      start_date : new FormControl(null,Validators.required),
       end_date : new FormControl(null,[Validators.required]),
       emp_id:new FormControl(localStorage.getItem("user_id"))
      }); 

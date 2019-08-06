@@ -23,8 +23,8 @@ export class ViewemployeesComponent implements OnInit {
     })
   }
 
-  update(id) {
-     this.empservice
+  edit(id) {
+     this.router.navigate(['admin/edit'])
   }
 
 }
