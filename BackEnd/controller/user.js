@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express();
 const con = require('../connection/connection.js');
-const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs')
 const { check, validationResult } = require('express-validator');
+const jwt = require('jsonwebtoken');
 const verifytoken = require('../verifytoken')
 require('dotenv').config();
-const SECRET_KEY = process.env.secretkey;
+const SECRET_KEY = 'shivam123';
 
 
 

@@ -36,7 +36,6 @@ export class FamilyComponent implements OnInit {
         localStorage.removeItem("temp2");  
         this.router.navigate(['admin']);      
      })
-    //  this.router.navigate(['admin']);
   }
 
 }

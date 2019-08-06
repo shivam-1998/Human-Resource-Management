@@ -1,0 +1,44 @@
+<app-header></app-header>
+<div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="login-content">
+                    <div class="login-form">
+                        <h4>leave form</h4>
+                        <form [formGroup]="registerForm" (ngSubmit)="addleave()">
+    
+                            <div class="form-group">
+                                <label> Start Date</label>
+                                <input type="date" class="form-control" formControlName="start_date" 
+                                    required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('start_date').valid && registerForm.get('start_date').touched">
+                                    <span *ngIf="!registerForm.get('start_date').errors['valid']">Enter
+                                            start_date</span>
+                                </span>
+                            </div>
+                            <div class="form-group ">
+                                <label>End Date</label>
+                                <input type="date" class="form-control" formControlName="end_date" 
+                                    required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('end_date').valid && registerForm.get('end_date').touched">
+                                    <span *ngIf="!registerForm.get('end_date').errors['valid']">Enter relation</span>
+                                </span>
+                            </div>
+                            <div class="form-group ">
+                                <label>Reason</label>
+                                <input type="text" class="form-control" formControlName="reason" placeholder="eg.to attend function"
+                                    required>
+                                <span class="text-danger"
+                                    *ngIf="!registerForm.get('reason').valid && registerForm.get('reason').touched">
+                                    <span *ngIf="!registerForm.get('reason').errors['valid']">Enter occupation</span>
+                                </span>
+                            </div>
+                            <button type="submit" [disabled]="!registerForm.valid" class="btn btn-primary btn-flat m-b-30 m-t-30">Apply</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

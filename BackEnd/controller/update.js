@@ -124,7 +124,7 @@ router.patch('/updatefamily/:Id', verifytoken, (req, res) => {
 })
 //get current employees
 router.get('/currentemp', verifytoken, (req, res )=> {
-    let query = `SELECT emp_name,email FROM Employee_master JOIN Professional_details ON Employee_master.emp_id = Professional_details.emp_id WHERE status='current'`
+    let query = `SELECT emp_name,email,contact_no FROM Employee_master JOIN Professional_details ON Employee_master.emp_id = Professional_details.emp_id WHERE status='current'`
     con.query(query,(error,results)=>{
         if(error){
             return res.status(500).send({ msg: "not getting current employee", error })
@@ -134,7 +134,7 @@ router.get('/currentemp', verifytoken, (req, res )=> {
 })
 //get left employees
 router.get('/leftemp', verifytoken, (req, res )=> {
-    let query = `SELECT emp_name,email FROM Employee_master JOIN Professional_details ON Employee_master.emp_id = Professional_details.emp_id WHERE status='left'`
+    let query = `SELECT emp_name,email,contact_no FROM Employee_master JOIN Professional_details ON Employee_master.emp_id = Professional_details.emp_id WHERE status='left'`
     con.query(query,(error,results)=>{
         if(error){
             return res.status(500).send({ msg: "not getting current employee", error })

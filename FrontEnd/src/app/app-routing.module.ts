@@ -13,13 +13,15 @@ import { PersonalEditComponent } from './admin/personal/personal-edit/personal-e
 import { EducationEditComponent } from './admin/education/education-edit/education-edit.component';
 import { ProfessionalEditComponent } from './admin/professional/professional-edit/professional-edit.component';
 import { FamilyEditComponent } from './admin/family/family-edit/family-edit.component';
+import { LeaveComponent } from './employee/leave/leave.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'employee', component: EmployeeComponent },
+   {path:'leave',component:LeaveComponent},
   {
-    path: 'admin', component: AdminComponent, children: [
+    path: 'admin', component: AdminComponent},
       { path: 'personal', component: PersonalComponent}, 
       { path: 'education', component: EducationComponent },
       { path: 'family', component: FamilyComponent },
@@ -30,8 +32,6 @@ const routes: Routes = [
       { path: 'educationedit/:Id', component: EducationEditComponent },
       { path: 'professionaledit/:Id', component: ProfessionalEditComponent },
       { path: 'familyedit/:Id', component: FamilyEditComponent }
-    ]
-  }
 ];
 
 @NgModule({

@@ -21,6 +21,7 @@ import { EducationEditComponent } from './admin/education/education-edit/educati
 import { PersonalEditComponent } from "./admin/personal/personal-edit/personal-edit.component";
 import { FamilyEditComponent } from './admin/family/family-edit/family-edit.component';
 import { ProfessionalEditComponent } from "./admin/professional/professional-edit/professional-edit.component";
+import { LeaveComponent } from './employee/leave/leave.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ProfessionalEditComponent } from "./admin/professional/professional-edi
     EducationEditComponent,
     FamilyEditComponent,
     ProfessionalEditComponent,
-    PersonalEditComponent
+    PersonalEditComponent,
+    LeaveComponent
   ],
   imports: [
     BrowserModule,
