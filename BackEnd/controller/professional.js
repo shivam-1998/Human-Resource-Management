@@ -52,18 +52,18 @@ router.post('/professional', verifytoken, [
     });
 
     //get professional details
-    router.get('/professional',verifytoken,
-    (req,res)=>{
-    const emp_id = req.data.emp_id
-    let query = `SELECT * FROM Professional WHERE emp_id = '${emp_id}'`;
-    con.query(query,function(err,results){
-        if (err){
-            res.status(500).json("there are some error with query");
-        }
-        else{
-            res.status(200).json({msg:"get the data successfully",result:results});
-        }
-    })
-})
+//     router.update('/company',verifytoken,
+//     (req,res)=>{
+//     const emp_id = req.params.Id
+//     let query = `Update (c_name,designation,join_date,status,dept_name) Professional_details WHERE emp_id = '${emp_id}'`;
+//     con.query(query,function(err,results){
+//         if (err){
+//             res.status(500).json("there are some error with query");
+//         }
+//         else{
+//             res.status(200).json({msg:"get the data successfully",result:results});
+//         }
+//     })
+// })
 
 module.exports = router;

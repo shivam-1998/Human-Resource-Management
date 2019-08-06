@@ -8,7 +8,11 @@ import { ProfessionalComponent } from './admin/professional/professional.compone
 import { AdminComponent } from './admin/admin.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { ViewemployeesComponent } from './admin/viewemployees/viewemployees.component';
-import { EditComponent } from './edit/edit.component';
+import { EditComponent } from './admin/edit/edit.component';
+import { PersonalEditComponent } from './admin/personal/personal-edit/personal-edit.component';
+import { EducationEditComponent } from './admin/education/education-edit/education-edit.component';
+import { ProfessionalEditComponent } from './admin/professional/professional-edit/professional-edit.component';
+import { FamilyEditComponent } from './admin/family/family-edit/family-edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -21,7 +25,11 @@ const routes: Routes = [
       { path: 'family', component: FamilyComponent },
       { path: 'professional', component: ProfessionalComponent },
       { path: 'employeelist', component: ViewemployeesComponent },
-      { path: 'edit', component: EditComponent }
+      { path: 'edit/:Id', component: EditComponent },
+      { path: 'personaledit/:Id', component: PersonalEditComponent },
+      { path: 'educationedit/:Id', component: EducationEditComponent },
+      { path: 'professionaledit/:Id', component: ProfessionalEditComponent },
+      { path: 'familyedit/:Id', component: FamilyEditComponent }
     ]
   }
 ];

@@ -4,7 +4,6 @@ require('dotenv').config();
 const SECRET_KEY = process.env.secretkey;
 
 verifytoken = (req,res,next) => {
-     console.log(req.headers);
      
      let decoded = jwt.verify(req.headers['token'],SECRET_KEY);
      if(decoded){
@@ -13,7 +12,6 @@ verifytoken = (req,res,next) => {
         con.query(check,(error,result)=>{
             if(!error){
                   req.data= result[0]
-                  console.log(req.data);
                   next();
                   
             }else{

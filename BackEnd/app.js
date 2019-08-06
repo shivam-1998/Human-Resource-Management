@@ -10,6 +10,7 @@ const education = require('./controller/education')
 const family = require('./controller/family')
 const professional = require('./controller/professional')
 const employee = require('./controller/employee')
+const update = require('./controller/update')
 
 //configuration
 // app.use(function(req, res, next) {
@@ -30,6 +31,7 @@ app.use(family);
 app.use(professional);
 app.use(education);
 app.use(employee);
+app.use(update);
 
 
 

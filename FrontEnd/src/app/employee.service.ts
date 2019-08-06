@@ -29,5 +29,21 @@ export class EmployeeService {
   viewEmployeeList(){
     return this.http.get('http://localhost:3300/viewemployees')
   }
+  //updatepersonal
+  updatePesronal(data,id){
+    return this.http.patch('http://localhost:3300/updatepersonal/'+id,data);
+  }
+  //updateeducation
+  updateEducation(data,id){
+    return this.http.patch('http://localhost:3300/updateeducation/'+id,data);
+  }
+  //updateprofessional
+  updateProfessional(data,id){
+    return this.http.patch('http://localhost:3300/updateprofessional/'+id,data);
+  }
+  //updatepersonal
+  updateFamily(data,id){
+    return this.http.patch('http://localhost:3300/updatefamily/'+id,data);
+  }
 
 }

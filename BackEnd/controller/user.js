@@ -11,7 +11,7 @@ const SECRET_KEY = process.env.secretkey;
 
 
 //Personal Details
-router.post('/personaldetails',verifytoken,
+router.post('/personaldetails', verifytoken,
     [
         check('emp_name').not().isEmpty().withMessage("can not be blank"),
         check('email').isEmail().withMessage('must be a valid email address').not().isEmpty().withMessage("can not be blank"),
@@ -53,9 +53,9 @@ router.post('/personaldetails',verifytoken,
 
                 con.query(sql, function (error, results) {
                     if (!error) {
-                        return res.status(200).send({msg:"Register successfully personal details",emp:results});
+                        return res.status(200).send({ msg: "Register successfully personal details", emp: results });
                     } else {
-                        res.status(500).json({msg:'not registerd the details successfully',error:error});
+                        res.status(500).json({ msg: 'not registerd the details successfully', error: error });
                     }
                 });
             }
@@ -69,10 +69,8 @@ router.post('/login',
     [
         check('email').isEmail().withMessage('please enter a valid email address').not().isEmpty().withMessage('can not be blank'),
         check('password').isLength({ min: 5 }).withMessage("Length should be min 5 char").not().isEmpty().withMessage('can not be blank')
-    ], 
+    ],
     (req, res) => {
-        console.log("in");
-        console.log(req.body);
         try {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
@@ -81,7 +79,7 @@ router.post('/login',
 
             const email = req.body.email
             const password = req.body.password
-            data={email,password}
+            data = { email, password }
             let loginquery = `SELECT * FROM Employee_master WHERE email = '${email}'`;
             con.query(loginquery, function (error, results) {
                 if (error) {
@@ -90,9 +88,9 @@ router.post('/login',
                     if (results.length > 0) {
                         if (bcrypt.compareSync(password, results[0].password)) {
                             let token = jwt.sign(data, SECRET_KEY, {
-                                expiresIn: 5000
+                                expiresIn:  86400
                             });
-                            res.status(200).json({ token: token, emp_id: results[0]['emp_id'],role: results[0]['role']})
+                            res.status(200).json({ token: token, emp_id: results[0]['emp_id'], role: results[0]['role'] })
                         } else {
                             res.status(500).json(" password does not match");
                         }
@@ -108,18 +106,17 @@ router.post('/login',
     });
 
 //get personal details
-router.get('/viewemployees',verifytoken,
-(req,res)=>{
-    const email = req.data.email
-    let query = `SELECT * FROM Employee_master WHERE role = 'EMPLOYEE'`;
-    con.query(query,function(err,results){
-        if (err){
-            res.status(500).json("there are some error with query");
-        }
-        else{
-            res.status(200).json({msg:"get the data successfully",result:results});
-        }
+router.get('/viewemployees', verifytoken,
+    (req, res) => {
+        let query = `SELECT * FROM Employee_master WHERE role = 'EMPLOYEE'`;
+        con.query(query, function (err, results) {
+            if (err) {
+                res.status(500).json("there are some error with query");
+            }
+            else {
+                res.status(200).json({ msg: "get the data successfully", result: results });
+            }
+        })
     })
-})
 
 module.exports = router;

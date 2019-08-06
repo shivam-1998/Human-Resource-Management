@@ -24,7 +24,7 @@ export class ViewemployeesComponent implements OnInit {
   }
 
   edit(id) {
-     this.router.navigate(['admin/edit'])
+     this.router.navigate(['admin/edit/',+id])
   }
 
 }

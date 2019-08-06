@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <div class="login-content">
+            <div class="login-form">
+                <h3>Family details</h3><br>
+                <form [formGroup]="registerForm" (ngSubmit)="update()">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label> Name</label>
+                            <input type="text" class="form-control" formControlName="name" placeholder="Name">
+                        </div>
+                        <div class="col-md-3">
+                            <label>Relation</label>
+                            <input type="text" class="form-control" formControlName="relation" placeholder="relation">
+                        </div>
+                        <div class="col-md-3">
+                            <label>occupation</label>
+                            <input type="text" class="form-control" formControlName="occupation"
+                                placeholder="occupation">
+                        </div>
+                        <div class="col-md-3">
+                            <label>Contact No</label>
+                            <input type="text" class="form-control" formControlName="phone_no" placeholder="phone_no">
+                        </div>
+                    </div><br>
+                    <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">update</button><br>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

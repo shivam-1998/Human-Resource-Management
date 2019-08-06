@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="login-content">
+            <div class="login-form">
+                <h3>Professional details</h3><br>
+                <form [formGroup]="registerForm" (ngSubmit)="update()">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>CompanyName</label>
+                            <input type="text" class="form-control" formControlName="c_name" placeholder="CompanyName">
+                        </div>
+                        <div class="col-md-2">
+                            <label>Designation</label>
+                            <input type="text" class="form-control" formControlName="designation"
+                                placeholder="designation">
+                        </div>
+                        <div class="col-md-2">
+                            <label>Join date</label>
+                            <input type="date" class="form-control" formControlName="join_date" placeholder="join_date">
+                        </div>
+                        <div class="col-md-2">
+                            <label>Revealing date</label>
+                            <input type="date" class="form-control" formControlName="revealing_date"
+                                placeholder="revealing_date">
+                        </div>
+                        <div class="col-md-2">
+                            <label>Status</label>
+                            <input type="text" class="form-control" formControlName="status" placeholder="status">
+                        </div>
+                        <div class="col-md-2">
+                            <label>Department</label>
+                            <input type="text" class="form-control" formControlName="dept_name" placeholder="dept_name">
+                        </div>
+                    </div><br>
+                    <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">update</button><br>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
