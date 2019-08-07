@@ -37,9 +37,6 @@ export class EducationComponent implements OnInit {
       localStorage.removeItem("temp");
       localStorage.setItem("temp1","true");
       this.router.navigate(['admin/professional']);
-      
-    })
-    // this.router.navigate(['admin']);
-  }
-
+      })
+    }
 }

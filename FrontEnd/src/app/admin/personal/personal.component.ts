@@ -39,15 +39,13 @@ export class PersonalComponent implements OnInit {
         localStorage.setItem('user_id',res["emp"]["insertId"]);
         localStorage.setItem('temp',"true")
         this.router.navigate(['admin/education']);
-
-        
     },(err)=>{
       console.log(err);
-      
     })
-   
-    
-    
+  }
+
+  goBack(){
+    this.router.navigate(['admin'])
   }
 
 }

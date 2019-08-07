@@ -13,7 +13,7 @@ export class AdminComponent implements OnInit {
   education;
   profesional;
   family;
-  constructor(private router: Router, private empservice: EmployeeService,private user:UserserviceService) { }
+  constructor(private router: Router, private empservice: EmployeeService, private user: UserserviceService) { }
 
   ngOnInit() {
     this.viewpersonal();
@@ -21,34 +21,30 @@ export class AdminComponent implements OnInit {
     this.viewprofessional();
     this.viewfamily();
   }
-  
-  viewpersonal(){
+
+  viewpersonal() {
     const id = localStorage.getItem("emp_id")
-    this.user.viewpersonal(id).subscribe(res=>{
+    this.user.viewpersonal(id).subscribe(res => {
       this.personal = res['results'];
-      console.log(this.personal);
     })
   }
 
-  vieweducation(){
+  vieweducation() {
     const id = localStorage.getItem("emp_id")
-    this.user.vieweducation(id).subscribe(res=>{
+    this.user.vieweducation(id).subscribe(res => {
       this.education = res['results'];
-      console.log(this.education);
     })
   }
-  viewprofessional(){
+  viewprofessional() {
     const id = localStorage.getItem("emp_id")
-    this.user.viewprofessional(id).subscribe(res=>{
+    this.user.viewprofessional(id).subscribe(res => {
       this.profesional = res['results'];
-      console.log(this.profesional);
     })
   }
-  viewfamily(){
+  viewfamily() {
     const id = localStorage.getItem("emp_id")
-    this.user.viewfamily(id).subscribe(res=>{
+    this.user.viewfamily(id).subscribe(res => {
       this.family = res['results'];
-      console.log(this.family);
     })
   }
 }

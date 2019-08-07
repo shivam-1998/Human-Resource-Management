@@ -2,19 +2,19 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Url } from "../url";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private _loginUrl = "http://localhost:3300/login";
-
+  
   constructor(private http:HttpClient ,private router:Router) { }
 
 loginUser(user){ 
   console.log(user);
   
-  return this.http.post("http://localhost:3300/login",user)
+  return this.http.post(`${Url.url}/login`,user)
 }
 
 getToken(){

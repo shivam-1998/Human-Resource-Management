@@ -1,4 +1,4 @@
-<app-header></app-header>
+<hr>
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-lg-6">
@@ -126,7 +126,9 @@
                             </div>
                         </div>
                         <button type="submit" [disabled]="!registerForm.valid"
-                            class="btn btn-primary btn-flat m-b-30 m-t-30">Register</button><br>
+                            class="btn btn-primary btn-flat m-b-30 m-t-30 mx-3">Register</button>
+                        <button type="submit" (click)="goBack()"
+                            class="btn btn-warning btn-flat m-b-30 m-t-30">Go Back</button>
                     </form>
                 </div>
             </div>

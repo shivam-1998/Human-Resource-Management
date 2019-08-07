@@ -1,0 +1,44 @@
+<hr>
+<div class="sidenav">
+    <a routerLink="/personal">Add Employee Details</a>
+    <a routerLink="/employeelist">Employee list</a>
+    <a routerLink="/viewleaves">Leave Scheduels</a>
+</div><br>
+<div class="container">
+    <ul class="list-group list-group-horizontal">
+        <input type="button" value="Today" (click)="filter()" class="btn btn-primary mx-2">
+        <input type="button" value="Next 5 Days" (click)="Show()" class="btn btn-info">
+    </ul>
+    <div *ngIf="bool">
+            <h3>Todays Leaves</h3>
+        <div class="row">
+            
+            <div class="col-md-3" *ngFor="let i of leave">
+                <div class="card my-3">
+                    <div class="card-header bg-warning">Employee Name</div>
+                    <div class="card-body">{{i.emp_name}}</div>
+                    <div class="card-footer"></div>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+    <div *ngIf="temp">
+            <h3>Next 5 Days</h3>
+        <div class="row">
+            <div class="col-md-3" *ngFor="let i of show">
+                <div class="card my-3">
+                    <div class="card-header bg-warning">Employee Name</div>
+                    <div class="card-body">{{i.emp_name}}</div>
+                    <div class="card-footer"></div>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+
+
+    <div>
+
+    </div>
+</div>

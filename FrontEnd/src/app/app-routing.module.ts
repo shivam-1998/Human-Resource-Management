@@ -14,24 +14,27 @@ import { EducationEditComponent } from './admin/education/education-edit/educati
 import { ProfessionalEditComponent } from './admin/professional/professional-edit/professional-edit.component';
 import { FamilyEditComponent } from './admin/family/family-edit/family-edit.component';
 import { LeaveComponent } from './employee/leave/leave.component';
+import { LeaveSchedulesComponent } from './admin/leave-schedules/leave-schedules.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'employee', component: EmployeeComponent },
-   {path:'leave',component:LeaveComponent},
+  { path: 'leave', component: LeaveComponent },
   {
-    path: 'admin', component: AdminComponent},
-      { path: 'personal', component: PersonalComponent}, 
-      { path: 'education', component: EducationComponent },
-      { path: 'family', component: FamilyComponent },
-      { path: 'professional', component: ProfessionalComponent },
-      { path: 'employeelist', component: ViewemployeesComponent },
-      { path: 'edit/:Id', component: EditComponent },
-      { path: 'personaledit/:Id', component: PersonalEditComponent },
-      { path: 'educationedit/:Id', component: EducationEditComponent },
-      { path: 'professionaledit/:Id', component: ProfessionalEditComponent },
-      { path: 'familyedit/:Id', component: FamilyEditComponent }
+    path: 'admin', component: AdminComponent
+  },
+  { path: 'personal', component: PersonalComponent },
+  { path: 'education', component: EducationComponent },
+  { path: 'family', component: FamilyComponent },
+  { path: 'professional', component: ProfessionalComponent },
+  { path: 'employeelist', component: ViewemployeesComponent },
+  { path: 'edit/:Id', component: EditComponent },
+  { path: 'personaledit/:Id', component: PersonalEditComponent },
+  { path: 'educationedit/:Id', component: EducationEditComponent },
+  { path: 'professionaledit/:Id', component: ProfessionalEditComponent },
+  { path: 'familyedit/:Id', component: FamilyEditComponent },
+  { path: 'viewleaves', component: LeaveSchedulesComponent }
 ];
 
 @NgModule({

@@ -6,7 +6,7 @@ const { check, validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 const verifytoken = require('../verifytoken')
 require('dotenv').config();
-const SECRET_KEY =process.env.secretkey;
+const SECRET_KEY = process.env.secretkey;
 
 
 
@@ -50,14 +50,23 @@ router.post('/personaldetails', verifytoken,
                 let sql =
                     `INSERT INTO Employee_master(emp_name,email,password,contact_no,address,dob,pan_no,em_contact_no, em_contact_name,marital_status,skills,hobbies,role)
         VALUES('${empname}','${email}','${password}',${contact_no},'${address}','${dob}','${pan_no}',${em_contact_no},'${em_contact_name}','${marital_status}','${skills}','${hobbies}','${role}')`;
-                
+
                 con.query(sql, function (error, results) {
                     if (!error) {
-                        return res.status(200).send({ msg: "Register successfully personal details", emp: results });
-                        
+                        let leavequery = `INSERT INTO Leave_balance (leave_balance,emp_id) VALUES (1.5,${results['insertId']})`
+                        con.query(leavequery, (err, result) => {
+                            if (!err) {
+                                return res.status(200).send({ msg: "Register successfully personal details", emp: results });
+                            } else {
+                                res.status(500).send("not register successfully");
+                            }
+                        })
+
+
                     } else {
                         res.status(500).json({ msg: 'not registerd the details successfully', error: error });
                     }
+
                 });
             }
         } catch (error) { res.status(500).send({ msg: error }) };
@@ -89,7 +98,7 @@ router.post('/login',
                     if (results.length > 0) {
                         if (bcrypt.compareSync(password, results[0].password)) {
                             let token = jwt.sign(data, SECRET_KEY, {
-                                expiresIn:  86400
+                                expiresIn: 86400
                             });
                             res.status(200).json({ token: token, emp_id: results[0]['emp_id'], role: results[0]['role'] })
                         } else {

@@ -10,10 +10,11 @@ import { UserserviceService } from 'src/app/userservice.service';
 })
 export class LeaveComponent implements OnInit {
   registerForm:FormGroup
+
   constructor(private router:Router,private user:UserserviceService ) {
     this.registerForm = new FormGroup({
-      start_date : new FormControl(null,Validators.required),
-      end_date : new FormControl(null,Validators.required),
+     leave_start_date : new FormControl(null,Validators.required),
+      leave_end_date : new FormControl(null,Validators.required),
       reason : new FormControl(null,Validators.required),
       leave_type:new FormControl(null,Validators.required)
      }); 
@@ -24,10 +25,14 @@ export class LeaveComponent implements OnInit {
 
   addleave(){
     const data =  this.registerForm.value
-    const emp_id = localStorage.getItem('emp_id')
-    this.user.addleave(data,emp_id).subscribe(res=>{
+     data.emp_id = localStorage.getItem('emp_id')      
+    this.user.addleave(data).subscribe(res=>{
       this.router.navigate(['employee']);
     })
+  }
+
+  goback(){
+    this.router.navigate(['employee'])
   }
 
 }
