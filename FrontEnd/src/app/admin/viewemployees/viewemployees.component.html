@@ -1,31 +1,35 @@
 <app-header></app-header>
 <div class="sidenav">
-        <a routerLink="/personal" >Add Employee Details</a>
-        <a routerLink="/employeelist" >Employee list</a>
-      </div>
+    <a routerLink="/personal">Add Employee Details</a>
+    <a routerLink="/employeelist">Employee list</a>
+</div>
 <hr>
 <div class="container">
-  <div class="row">
-      <div class="col-md-11">
-                
+    <div class="row">
+        <div class="col-md-11">
+            <select name="filter" (change)="filter(change)" #change>
+                <option value="all">all</option>
+                <option value="current">current</option>
+                <option value="left">left</option>
+
+            </select>
             <div class="table">
-                    <tr>
-                        <th>EmpID</th>
-                        <th>Emp Name</th>
-                        <th>Email</th>
-                        <th>Contact_no</th>
-                        <th></th>
-                    </tr>
-                    <tr *ngFor="let emp of empdata; let i = index">
-                        <td>{{emp.emp_id}}</td>
-                        <td>{{emp.emp_name}}</td>
-                        <td>{{emp.email}}</td>
-                        <td>{{emp.contact_no}}</td>
-                        <td><button class="btn btn-primary"
-                                (click)="edit(emp.emp_id)">update</button>
-                        </td>
-                    </tr>
-                </div>
-      </div>
-  </div>
+                <tr>
+                    <th>EmpID</th>
+                    <th>Emp Name</th>
+                    <th>Email</th>
+                    <th>Contact_no</th>
+                    <th></th>
+                </tr>
+                <tr *ngFor="let emp of empdata; let i = index">
+                    <td>{{emp.emp_id}}</td>
+                    <td>{{emp.emp_name}}</td>
+                    <td>{{emp.email}}</td>
+                    <td>{{emp.contact_no}}</td>
+                    <td><button class="btn btn-primary" (click)="edit(emp.emp_id)">update</button>
+                    </td>
+                </tr>
+            </div>
+        </div>
+    </div>
 </div>

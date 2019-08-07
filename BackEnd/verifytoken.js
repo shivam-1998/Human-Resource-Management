@@ -1,10 +1,9 @@
 const con = require('./connection/connection')
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const SECRET_KEY = "shivam123";
+const SECRET_KEY =process.env.secretkey;
 
 verifytoken = (req,res,next) => {
-     
      let decoded = jwt.verify(req.headers['token'],SECRET_KEY);
      if(decoded){
         const email = decoded.email

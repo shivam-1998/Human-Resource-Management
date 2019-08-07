@@ -35,7 +35,16 @@
                                     <span *ngIf="!registerForm.get('reason').errors['valid']">Enter occupation</span>
                                 </span>
                             </div>
-                            <button type="submit" [disabled]="!registerForm.valid" class="btn btn-primary btn-flat m-b-30 m-t-30">Apply</button>
+                            <div class="form-group ">
+                                    <label>Leave type</label>
+                                    <input type="text" class="form-control" formControlName="leave_type" placeholder="eg.full day or half day"
+                                        required>
+                                    <span class="text-danger"
+                                        *ngIf="!registerForm.get('leave_type').valid && registerForm.get('leave_type').touched">
+                                        <span *ngIf="!registerForm.get('leave_type').errors['valid']">Enter leave_type</span>
+                                    </span>
+                                </div>
+                            <button type="submit" [disabled]="!registerForm.valid" class="btn btn-primary btn-flat m-b-30 m-t-30">submit</button>
                         </form>
                     </div>
                 </div>

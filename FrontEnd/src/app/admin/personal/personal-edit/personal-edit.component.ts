@@ -55,7 +55,7 @@ export class PersonalEditComponent implements OnInit {
     const data = this.registerForm.value
     this.route.params.subscribe(params => {
       this.emp.updatePesronal(data, params['Id']).subscribe(res => {
-          this.router.navigate(['admin/edit/',params['Id']])
+          this.router.navigate(['edit/',params['Id']])
       })
     })
   }

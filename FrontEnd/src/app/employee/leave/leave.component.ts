@@ -15,6 +15,7 @@ export class LeaveComponent implements OnInit {
       start_date : new FormControl(null,Validators.required),
       end_date : new FormControl(null,Validators.required),
       reason : new FormControl(null,Validators.required),
+      leave_type:new FormControl(null,Validators.required)
      }); 
    }
 
@@ -23,7 +24,8 @@ export class LeaveComponent implements OnInit {
 
   addleave(){
     const data =  this.registerForm.value
-    this.user.addleave(data).subscribe(res=>{
+    const emp_id = localStorage.getItem('emp_id')
+    this.user.addleave(data,emp_id).subscribe(res=>{
       this.router.navigate(['employee']);
     })
   }

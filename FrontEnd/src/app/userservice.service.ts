@@ -24,8 +24,16 @@ export class UserserviceService {
    return this.http.get("http://localhost:3300/viewfamilydata/"+id)
   }
   //add leave
-  addleave(data){
-    return this.http.post("http://localhost:3300/leave",data);
+  addleave(data,emp_id){
+    return this.http.post("http://localhost:3300/leave",data,emp_id);
+  }
+  //current
+  current(){
+    return this.http.get('http://localhost:3300/currentemp');
+  }
+  // left
+  left(){
+    return this.http.get('http://localhost:3300/leftemp');
   }
 
 

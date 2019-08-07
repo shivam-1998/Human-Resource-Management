@@ -19,22 +19,22 @@ export class EditComponent implements OnInit {
   
   editpersonal(){
     this.route.params.subscribe(params=>{
-      this.router.navigate(['admin/personaledit',params['Id']])
+      this.router.navigate(['personaledit',params['Id']])
     })
   }
   editeducation(){
     this.route.params.subscribe(params=>{
-      this.router.navigate(['admin/educationedit',params['Id']])
+      this.router.navigate(['educationedit',params['Id']])
     })
   }
   editprofessional(){
     this.route.params.subscribe(params=>{
-      this.router.navigate(['admin/professionaledit',params['Id']])
+      this.router.navigate(['professionaledit',params['Id']])
     })
   }
   editfamily(){
     this.route.params.subscribe(params=>{
-      this.router.navigate(['admin/familyedit',params['Id']])
+      this.router.navigate(['familyedit',params['Id']])
     })
   }
 }

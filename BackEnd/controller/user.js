@@ -6,7 +6,7 @@ const { check, validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 const verifytoken = require('../verifytoken')
 require('dotenv').config();
-const SECRET_KEY = 'shivam123';
+const SECRET_KEY =process.env.secretkey;
 
 
 
@@ -50,10 +50,11 @@ router.post('/personaldetails', verifytoken,
                 let sql =
                     `INSERT INTO Employee_master(emp_name,email,password,contact_no,address,dob,pan_no,em_contact_no, em_contact_name,marital_status,skills,hobbies,role)
         VALUES('${empname}','${email}','${password}',${contact_no},'${address}','${dob}','${pan_no}',${em_contact_no},'${em_contact_name}','${marital_status}','${skills}','${hobbies}','${role}')`;
-
+                
                 con.query(sql, function (error, results) {
                     if (!error) {
                         return res.status(200).send({ msg: "Register successfully personal details", emp: results });
+                        
                     } else {
                         res.status(500).json({ msg: 'not registerd the details successfully', error: error });
                     }

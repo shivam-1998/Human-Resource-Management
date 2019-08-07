@@ -11,17 +11,9 @@ const family = require('./controller/family')
 const professional = require('./controller/professional')
 const employee = require('./controller/employee')
 const update = require('./controller/update')
+const leave = require('./controller/leave')
 
 //configuration
-// app.use(function(req, res, next) {
-//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-//     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type','Accept','token');
-//     res.setHeader('Access-Control-Allow-Credentials', true);
-//     res.setHeader('Content-Type', 'application/json');
-//     res.setHeader('Access-Control-Allow-Origin', '*');
-//     next();
-// });
-
 app.use(bodyparser.json())
 app.use(cors());
 app.use(bodyparser.urlencoded({extended:false}))
@@ -32,6 +24,7 @@ app.use(professional);
 app.use(education);
 app.use(employee);
 app.use(update);
+app.use(leave);
 
 
 
