@@ -15,26 +15,27 @@ import { ProfessionalEditComponent } from './admin/professional/professional-edi
 import { FamilyEditComponent } from './admin/family/family-edit/family-edit.component';
 import { LeaveComponent } from './employee/leave/leave.component';
 import { LeaveSchedulesComponent } from './admin/leave-schedules/leave-schedules.component';
+import { AuthguardService } from './authguard.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'employee', component: EmployeeComponent },
-  { path: 'leave', component: LeaveComponent },
-  {
-    path: 'admin', component: AdminComponent
-  },
-  { path: 'personal', component: PersonalComponent },
-  { path: 'education', component: EducationComponent },
-  { path: 'family', component: FamilyComponent },
-  { path: 'professional', component: ProfessionalComponent },
-  { path: 'employeelist', component: ViewemployeesComponent },
-  { path: 'edit/:Id', component: EditComponent },
-  { path: 'personaledit/:Id', component: PersonalEditComponent },
-  { path: 'educationedit/:Id', component: EducationEditComponent },
-  { path: 'professionaledit/:Id', component: ProfessionalEditComponent },
-  { path: 'familyedit/:Id', component: FamilyEditComponent },
-  { path: 'viewleaves', component: LeaveSchedulesComponent }
+
+  { path: 'employee', component: EmployeeComponent, canActivate: [AuthguardService],data: {role: 'EMPLOYEE'} },
+  { path: 'leave', component: LeaveComponent,canActivate:[AuthguardService],data: {role: 'EMPLOYEE'} },
+
+  { path: 'admin', component: AdminComponent, canActivate: [AuthguardService],data: {role: 'HR'} },
+  { path: 'personal', component: PersonalComponent, canActivate: [AuthguardService],data: {role: 'HR'} },
+  { path: 'education', component: EducationComponent, canActivate: [AuthguardService],data: {role: 'HR'} },
+  { path: 'family', component: FamilyComponent, canActivate: [AuthguardService],data: {role: 'HR'} },
+  { path: 'professional', component: ProfessionalComponent, canActivate: [AuthguardService],data: {role: 'HR'} },
+  { path: 'employeelist', component: ViewemployeesComponent, canActivate: [AuthguardService],data: {role: 'HR'} },
+  { path: 'edit/:Id', component: EditComponent, canActivate: [AuthguardService],data: {role: 'HR'} },
+  { path: 'personaledit/:Id', component: PersonalEditComponent, canActivate: [AuthguardService],data: {role: 'HR'} },
+  { path: 'educationedit/:Id', component: EducationEditComponent, canActivate: [AuthguardService],data: {role: 'HR'} },
+  { path: 'professionaledit/:Id', component: ProfessionalEditComponent, canActivate: [AuthguardService],data: {role: 'HR'} },
+  { path: 'familyedit/:Id', component: FamilyEditComponent, canActivate: [AuthguardService],data: {role: 'HR'} },
+  { path: 'viewleaves', component: LeaveSchedulesComponent, canActivate: [AuthguardService],data: {role: 'HR'} }
 ];
 
 @NgModule({

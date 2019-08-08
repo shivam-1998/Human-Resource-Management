@@ -12,8 +12,6 @@ export class AuthService {
   constructor(private http:HttpClient ,private router:Router) { }
 
 loginUser(user){ 
-  console.log(user);
-  
   return this.http.post(`${Url.url}/login`,user)
 }
 
@@ -23,6 +21,8 @@ getToken(){
 
 logoutUser(){
   localStorage.removeItem('token')
+  localStorage.removeItem('emp_id')
+  localStorage.removeItem('user')
   this.router.navigate(['login']);
 }
 

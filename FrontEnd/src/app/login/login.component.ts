@@ -26,14 +26,16 @@ export class LoginComponent implements OnInit {
   onSubmit() {
 
     const data = this.loginForm.value
-    
+
     this.auth.loginUser(data).subscribe(res => {
-      localStorage.setItem('token', res["token"])
-      localStorage.setItem('emp_id', res["emp_id"])
+      localStorage.setItem('token', res["token"]);
+      localStorage.setItem('emp_id', res["emp_id"]);
+      localStorage.setItem('user',res['role']);
       if (res["role"] == 'HR') {
         this.router.navigate(['/admin'])
-      } else {
-        this.router.navigate(['/employee'])
+      }
+      else {
+        this.router.navigate(['/login'])
       }
     },
       err => {
