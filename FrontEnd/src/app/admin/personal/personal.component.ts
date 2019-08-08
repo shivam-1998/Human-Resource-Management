@@ -44,8 +44,5 @@ export class PersonalComponent implements OnInit {
     })
   }
 
-  goBack(){
-    this.router.navigate(['admin'])
-  }
 
 }

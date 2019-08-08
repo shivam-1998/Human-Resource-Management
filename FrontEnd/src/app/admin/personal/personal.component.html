@@ -1,3 +1,8 @@
+<div class="sidenav">
+    <a routerLink="/personal">Add Employee Details</a>
+    <a routerLink="/employeelist">Employee list</a>
+    <a routerLink="/viewleaves" >Leave Scheduels</a>
+</div>
 <hr>
 <div class="container-fluid">
     <div class="row justify-content-center">
@@ -127,8 +132,6 @@
                         </div>
                         <button type="submit" [disabled]="!registerForm.valid"
                             class="btn btn-primary btn-flat m-b-30 m-t-30 mx-3">Register</button>
-                        <button type="submit" (click)="goBack()"
-                            class="btn btn-warning btn-flat m-b-30 m-t-30">Go Back</button>
                     </form>
                 </div>
             </div>

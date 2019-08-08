@@ -31,8 +31,5 @@ export class LeaveComponent implements OnInit {
     })
   }
 
-  goback(){
-    this.router.navigate(['employee'])
-  }
 
 }
