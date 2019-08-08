@@ -2,6 +2,8 @@ const express = require('express');
 const bodyparser = require('body-parser');
 const app = express();
 const cors = require('cors');
+const cron = require('node-cron')
+const con = require('../BackEnd/connection/connection');
 const port =  process.env.port || 3300;
 require('dotenv').config();
 
@@ -26,7 +28,8 @@ app.use(employee);
 app.use(update);
 app.use(leave);
 
-
+//cron
+require('./controller/addleave');
 
 
 
@@ -34,4 +37,7 @@ app.use(leave);
 //start the server
 app.listen(port,function(){
     console.log("Sever started at port",+port);
+
+
+
 })
