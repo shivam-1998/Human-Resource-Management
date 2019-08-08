@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/admin'])
       }
       else {
-        this.router.navigate(['/login'])
+        this.router.navigate(['/employee'])
       }
     },
       err => {

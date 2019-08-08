@@ -25,7 +25,6 @@ export class EmployeeComponent implements OnInit {
     const id = localStorage.getItem("emp_id")
     this.userservice.viewpersonal(id).subscribe(res=>{
       this.personal = res['results'];
-      console.log(this.personal);
     })
   }
 
@@ -33,21 +32,18 @@ export class EmployeeComponent implements OnInit {
     const id = localStorage.getItem("emp_id")
     this.userservice.vieweducation(id).subscribe(res=>{
       this.education = res['results'];
-      console.log(this.education);
     })
   }
   viewprofessional(){
     const id = localStorage.getItem("emp_id")
     this.userservice.viewprofessional(id).subscribe(res=>{
       this.profesional = res['results'];
-      console.log(this.profesional);
     })
   }
   viewfamily(){
     const id = localStorage.getItem("emp_id")
     this.userservice.viewfamily(id).subscribe(res=>{
       this.family = res['results'];
-      console.log(this.family);
     })
   }
 

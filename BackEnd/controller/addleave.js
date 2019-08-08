@@ -8,10 +8,9 @@ const task = cron.schedule('0 0 1 1-12 *', () => {
         if (!err) {
             console.log('update successfully leave balance by every month');
         }
-
     })
-
-}, {
+}
+    , {
         scheduled: true,
         timezone: "Asia/Kolkata"
     });

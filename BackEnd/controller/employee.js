@@ -6,6 +6,11 @@ const verifytoken = require('../verifytoken')
 //viewpersonal data of employee by Id
 router.get('/viewpersonaldata/:Id', verifytoken, (req, res) => {
     const emp_id = req.params.Id
+    let check = `select emp_id from Employee_master where emp_id=${emp_id}`
+    con.query(check, (error, data) => {
+        if (data.length == 0) {
+            res.status(500).send("user not exists")
+        } else {
             let query = `SELECT * FROM Employee_master WHERE emp_id = ${emp_id}`
             con.query(query, (error, results) => {
                 if (results.length > 0) {
@@ -14,7 +19,10 @@ router.get('/viewpersonaldata/:Id', verifytoken, (req, res) => {
                     return res.status(500).send({ msg: "not geeting data" })
                 }
             })
-        });
+        }
+    })
+
+});
 
 //vieweducation data of employee by Id
 router.get('/vieweducationdata/:Id', verifytoken, (req, res) => {
@@ -40,7 +48,7 @@ router.get('/vieweducationdata/:Id', verifytoken, (req, res) => {
 //viewprofessional data of employee by Id
 router.get('/viewprofessionaldata/:Id', verifytoken, (req, res) => {
     const emp_id = req.params.Id
-    let check = `select emp_id from Education where emp_id=${emp_id}`
+    let check = `select emp_id from Professional_details where emp_id=${emp_id}`
     con.query(check, (error, data) => {
         if (data.length == 0) {
             res.send("user not exists")
@@ -60,11 +68,11 @@ router.get('/viewprofessionaldata/:Id', verifytoken, (req, res) => {
 //viewfamily data of employee by Id
 router.get('/viewfamilydata/:Id', verifytoken, (req, res) => {
     const emp_id = req.params.Id
-    let check = `select emp_id from Education where emp_id=${emp_id}`
+    let check = `select emp_id from Family where emp_id=${emp_id}`
     con.query(check, (error, data) => {
         if (data.length == 0) {
             res.send("user not exists")
-        } else{
+        } else {
             let query = `select * from Family WHERE emp_id = ${emp_id}`
             con.query(query, (error, results) => {
                 if (!error) {
@@ -73,8 +81,9 @@ router.get('/viewfamilydata/:Id', verifytoken, (req, res) => {
                     return res.status(500).send({ msg: "not geting data", error })
                 }
             })
-        }});
-   
+        }
+    });
+
 });
 
 module.exports = router;
