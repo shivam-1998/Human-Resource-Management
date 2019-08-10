@@ -39,7 +39,7 @@ export class EducationEditComponent implements OnInit {
     const data = this.registerForm.value
     this.route.params.subscribe(params => {
       this.emp.updateEducation(data, params['Id']).subscribe(res => {
-        this.router.navigate(['edit/',params['Id']])
+        this.router.navigate(['admin/edit/',params['Id']])
       })
     })
   }

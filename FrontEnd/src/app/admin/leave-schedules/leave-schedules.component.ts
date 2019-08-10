@@ -26,8 +26,6 @@ export class LeaveSchedulesComponent implements OnInit {
     //view next 5 days leaves
     this.emp.showleaves().subscribe(leaves => {
       this.show = leaves['result']
-      console.log(this.show);
-
     })
   }
   filter() {

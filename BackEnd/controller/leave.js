@@ -21,54 +21,51 @@ router.post('/leave', verifytoken,
                 const reason = req.body.reason
                 const leave_type = req.body.leave_type
                 const emp_id = req.data.emp_id
+
+
                 //check leave balance
-                // let check = `SELECT L_id,leave_balance FROM Leave_balance WHERE emp_id=${emp_id}`
-                // con.query(check, (error, data) => {
-                //     console.log(data);
-
-                //     if (data.length > 0) {
-                //         res.json("leave balance")
-                //     } else {
-
-                //check leave exists or not
-                // let Query = `SELECT leave_start_date,leave_end_date FROM Leave_History WHERE L_id=${data[0]['L_id']}
-                // AND CURDATE()  BETWEEN leave_start_date AND leave_end_date `
-                // con.query(Query, (err, data) => {
-                //     console.log(data);
-
-                //     if (data.length > 0) {
-                //         res.json({msg:"leave not exist"})
-                //     } else {
-                    
-                    let sql =
-                    `INSERT INTO Leave_History ( leave_start_date,leave_end_date,reason,leave_type,L_id)
-             VALUES('${leave_start_date}','${leave_end_date}','${reason}','${leave_type}',(SELECT L_id FROM Leave_balance WHERE Leave_balance.emp_id = ${emp_id}))`;
-                //insert leave
-                con.query(sql, function (error, results) {
-                    if (error) {
-                        return res.status(500).json('not add the leave successfully');
+                let check = `SELECT L_id,leave_balance FROM Leave_balance WHERE emp_id=${emp_id}`
+                con.query(check, (error, data) => {
+                    console.log(data);
+                    if (data[0]['leave_balance'] == 0) {
+                        res.json({ msg: "your leave balance is 0 You can appply paid leave if you want" })
                     } else {
+                        //check leave exists or not
+                        // let Query = `SELECT leave_start_date,leave_end_date FROM Leave_History WHERE L_id=${data[0]['L_id']}
+                        //            AND CURDATE()  BETWEEN leave_start_date='${leave_start_date}' AND leave_end_date='${leave_end_date}' `
+                        // con.query(Query, (err, data) => {
+                        //     console.log(data);
+                        //     if (data.length > 0) {
+                        //         res.json({ msg: "leave already exist you can not apply further" })
+                        //     } else {
+                            
+                                let sql =
+                                    `INSERT INTO Leave_History ( leave_start_date,leave_end_date,reason,leave_type,L_id)
+                                  VALUES('${leave_start_date}','${leave_end_date}','${reason}','${leave_type}',(SELECT L_id FROM Leave_balance WHERE Leave_balance.emp_id = ${emp_id}))`;
+                                //insert leave
+                                con.query(sql, function (error, results) {
+                                    if (error) {
+                                        return res.status(500).json('not add the leave successfully');
+                                    } else {
 
-                        //update leave balance
-                        let temp =
-                            `UPDATE Leave_balance SET leave_balance =leave_balance-DATEDIFF('${leave_end_date}','${leave_start_date}') WHERE Leave_balance.emp_id = ${emp_id}`
-                        con.query(temp, (error, result) => {
-                            if (!error) {
-                                res.status(200).json("update successfully leave balance")
-                            } else {
-                                res.json("not updated")
-                            }
-                        })
+                                        //update leave balance
+                                        let temp =
+                                            `UPDATE Leave_balance SET leave_balance =leave_balance-DATEDIFF('${leave_end_date}','${leave_start_date}') WHERE Leave_balance.emp_id = ${emp_id}`
+                                        con.query(temp, (error, result) => {
+                                            if (!error) {
+                                                res.status(200).json("update successfully leave balance")
+                                            } else {
+                                                res.json("not updated  successfully leave balance")
+                                            }
+                                        })
+                                    }
+                                });
+                            //}
+                        //})
                     }
-                });
-
-
-                //}
-                // })
+                })
             }
-            // })
         }
-
         catch{
             return res.status(500).send({ msg: error })
         }

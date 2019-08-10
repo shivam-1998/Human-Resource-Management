@@ -11,7 +11,7 @@ export class AuthguardService implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const user = localStorage.getItem("user")
-    if (this.auth.loggedIn()) {
+    if (this.auth.loggedIn()) { 
       //  check role
       if (route.data.role == user) {
         return true

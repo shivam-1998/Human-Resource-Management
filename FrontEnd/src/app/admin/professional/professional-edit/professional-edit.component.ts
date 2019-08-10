@@ -44,7 +44,7 @@ export class ProfessionalEditComponent implements OnInit {
     const data = this.registerForm.value
     this.route.params.subscribe(params => {
       this.emp.updateProfessional(data, params['Id']).subscribe(res => {      
-        this.router.navigate(['edit/',params['Id']])
+        this.router.navigate(['admin/edit/',params['Id']])
       })
     })
   }
